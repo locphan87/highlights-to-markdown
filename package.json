@@ -4,9 +4,11 @@
   "description": "",
   "main": "parser.js",
   "dependencies": {
+    "moment": "^2.25.3"
   },
   "devDependencies": {
-    "jest": "^26.0.1"},
+    "jest": "^26.0.1"
+  },
   "scripts": {
     "test": "jest"
   },
