@@ -1,7 +1,8 @@
 const moment = require('moment');
 
 const SEPARATOR = '==========';
-const DATE_FORMAT = 'D [escaped] MMMM [escaped] YYYY H:mm:ss';
+const INPUT_DATE_FORMAT = 'D [escaped] MMMM [escaped] YYYY H:mm:ss';
+const OUTPUT_DATE_FORMAT = 'YYYY-MM-DD';
 
 function parse(input) {
     const rawClippings = input.split(SEPARATOR).filter((clipping) => clipping != "");
@@ -50,7 +51,7 @@ function getExistingBook(books, currentBookName) {
 function getDate(data) {
     if (data) {
         const spanishDate = data.substring(data.lastIndexOf(",") + 2, data.lenght).trim();
-        return moment(spanishDate, DATE_FORMAT, 'es').calendar();
+        return moment(spanishDate, INPUT_DATE_FORMAT, 'es').format(OUTPUT_DATE_FORMAT);
     }
 
     return "";
