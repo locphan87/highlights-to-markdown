@@ -1,0 +1,375 @@
+﻿C# in Depth (Jon Skeet)
+- Tu subrayado en la posición 8300 | Añadido el lunes, 29 de diciembre de 2014 18:01:40
+
+
+==========
+﻿C# in Depth (Jon Skeet)
+- Tu subrayado en la posición 9012-9014 | Añadido el miércoles, 31 de diciembre de 2014 14:36:14
+
+In essence, variance is about being able to use an object of one type as if it were another, in a type-safe way. You’re used to variance in terms of normal inheritance: if a method has a declared return type of Stream, you can return a MemoryStream from the implementation, for example. Generic
+==========
+﻿C# in Depth (Jon Skeet)
+- Tu subrayado en la posición 9021-9021 | Añadido el miércoles, 31 de diciembre de 2014 14:37:02
+
+Covariance is all about values being returned from an operation back to the caller.
+==========
+﻿C# in Depth (Jon Skeet)
+- Tu subrayado en la posición 9027-9028 | Añadido el miércoles, 31 de diciembre de 2014 14:37:16
+
+Contravariance is the opposite way around. It’s about values being passed into the API by the caller: the API is consuming the values instead
+==========
+﻿C# in Depth (Jon Skeet)
+- Tu subrayado en la posición 9366-9366 | Añadido el miércoles, 31 de diciembre de 2014 20:23:49
+
+REPL—a read, evaluate, print loop.
+==========
+Scrum And Xp From The Trenches - Henrik Kniberg (Juan Pallarès)
+- Tu subrayado en la posición 1415-1427 | Añadido el sábado, 21 de febrero de 2015 20:23:47
+
+Pair programming does improve code quality. Pair programming does improve team focus (for example when the guy behind you says “hey is that stuff really necessary for this sprint?”). Surprisingly many developers that are strongly against pair programming actually haven’t tried it, and quickly learn to like it once they do try it. Pair programming is exhaustive and should not be done all day. Shifting pairs frequently is good. Pair programming does improve knowledge spread within the group. Surprisingly fast too. Some people just aren’t comfortable with pair programming. Don’t throw out an excellent programmer just because he isn’t comfortable with pair programming. Code review is an OK alternative to pair programming. The “navigator” (the guy not using the keyboard) should have a computer of his own as well. Not for development, but for doing little spikes when necessary, browsing documentation when the “driver” (the guy at the keyboard) gets stuck, etc. Don’t force pair programming upon people. Encourage people and provide the right tools but let them experiment with it at their own pace.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 773-774 | Añadido el miércoles, 27 de enero de 2016 20:04:07
+
+If you want someone to listen and understand your reasoning, give your interests and reasoning first and your conclusions or proposals later.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 828-829 | Añadido el miércoles, 27 de enero de 2016 20:12:07
+
+Successful negotiation requires being both firm and open.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 841-842 | Añadido el miércoles, 27 de enero de 2016 20:14:55
+
+the first sister took her half, ate the fruit, and threw away the peel, while the other threw away the fruit and used the peel from her half in baking
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 843-843 | Añadido el miércoles, 27 de enero de 2016 20:15:06
+
+a cake.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 1013 | Añadido el miércoles, 27 de enero de 2016 20:43:59
+
+
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 1295-1296 | Añadido el lunes, 1 de febrero de 2016 23:18:26
+
+What makes conceding particularly difficult is having to accept someone else's proposal. If they suggested the standard, their deferring to it is not an act of weakness but an act of strength, of carrying out their word.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 1480-1482 | Añadido el viernes, 5 de febrero de 2016 6:24:57
+
+The greater your willingness to break off negotiations, the more forcefully you can present your interests and the basis on which you believe an agreement should be reached.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 1504-1504 | Añadido el viernes, 5 de febrero de 2016 6:27:32
+
+The more easily and happily you can walk away from a negotiation, the greater your capacity to affect its outcome.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 1530-1533 | Añadido el viernes, 5 de febrero de 2016 6:31:58
+
+Do not push back. When they assert their positions, do not reject them. When they attack your ideas, don't defend them. When they attack you, don't counterattack. Break the vicious cycle by refusing to react. Instead of pushing back, sidestep their attack and deflect it against the problem. As in the Oriental martial arts of judo and jujitsu, avoid pitting your strength against theirs directly; instead, use your skill to step aside and turn their strength to your ends.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 1744-1745 | Añadido el martes, 9 de febrero de 2016 20:57:20
+
+communicates the same information to her but in a less threatening manner.
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 1743-1743 | Añadido el martes, 9 de febrero de 2016 20:57:25
+
+Phrasing each piece of information as a question allows
+==========
+Getting to Yes (Fisher, Roger; Ury, William L.)
+- Tu subrayado en la posición 1779-1779 | Añadido el miércoles, 10 de febrero de 2016 18:37:17
+
+In principled negotiation you should present all your reasons first before offering a proposal.
+==========
+How To Win Friends And Influence People (Carnegie, Dale)
+- Tu subrayado en la posición 419-421 | Añadido el martes, 22 de marzo de 2016 10:57:11
+
+Any fool can criticise, condemn and complain – and most fools do. But it takes character and self-control to be understanding and forgiving. ‘A great man shows his
+==========
+How To Win Friends And Influence People (Carnegie, Dale)
+- Tu subrayado en la posición 571-575 | Añadido el martes, 22 de marzo de 2016 11:17:27
+
+‘I consider my ability to arouse enthusiasm among my people,’ said Schwab, ‘the greatest asset I possess, and the way to develop the best that is in a person is by appreciation and encouragement. ‘There is nothing else that so kills the ambitions of a person as criticisms from superiors. I never criticise anyone. I believe in giving a person incentive to work. So I am anxious to praise but loath to find fault. If I like anything, I am hearty in my approbation and lavish in my praise.’ That
+==========
+How To Win Friends And Influence People (Carnegie, Dale)
+- Tu subrayado en la posición 751-752 | Añadido el martes, 22 de marzo de 2016 11:50:49
+
+‘If there is any one secret of success, it lies in the ability to get the other person’s point of view and see things from that person’s angle as well as from your own.’
+==========
+The Scrum Guide (Ken Schwaber)
+- Tu subrayado en la posición 120-121 | Añadido el domingo, 10 de abril de 2016 17:56:48
+
+Only the Product Owner has the authority to cancel the Sprint,
+==========
+The Scrum Guide (Ken Schwaber)
+- Tu subrayado en la posición 121-122 | Añadido el domingo, 10 de abril de 2016 17:57:11
+
+A Sprint would be cancelled if the Sprint Goal becomes obsolete.
+==========
+The Scrum Guide (Ken Schwaber)
+- Tu subrayado en la posición 170-171 | Añadido el domingo, 10 de abril de 2016 18:02:31
+
+The Scrum Master enforces the rule that only Development Team members participate in the Daily Scrum.
+==========
+El Plan Revolucionario (Fitness Revolucionario)
+- Tu subrayado en la posición 3144-3145 | Añadido el lunes, 16 de enero de 2017 23:26:29
+
+Si tu ingesta de proteína es menor a 2g/kilo, auméntala un poco, y revisa el capítulo de estancamientos.
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- Tu subrayado en la posición 134-138 | Añadido el martes, 21 de marzo de 2017 23:15:21
+
+Dietary fat is bad. No, dietary fat is good. There are good fats and bad fats. Carbohydrates are bad. No, carbohydrates are good. There are good carbs and bad carbs. You should eat more meals a day. No, you should eat fewer meals a day. Count your calories. No, calories don’t count. Milk is good for you. No, milk is bad for you. Meat is good for you. No, meat is bad for you.
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- Tu subrayado en la posición 312-312 | Añadido el miércoles, 22 de marzo de 2017 22:53:43
+
+His 1972 book, Pure, White and Deadly: How Sugar Is Killing Us,
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- Tu subrayado en la posición 667-669 | Añadido el sábado, 25 de marzo de 2017 0:44:08
+
+The Women’s Health Initiative Dietary Modification Trial was the biggest, baddest, most kick-ass study of the Eat Less, Move More strategy that has even been or ever will be done—and it was a resounding repudiation of that strategy. What is happening when we
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 866-868 | Añadido el sábado, 1 de abril de 2017 0:47:27
+
+The macronutrient breakdown of his diet was 10 percent carbohydrate, 53 percent fat and 37 percent protein. Standard calorie calculations predicted a weight gain of about 16 pounds (7.3 kilograms). Actual weight gain, however, was only about 2.8 pounds (1.3 kilograms).
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 868-869 | Añadido el sábado, 1 de abril de 2017 0:47:40
+
+Even more interesting, he dropped more than 1 inch (2.5 centimeters) from his waist measurement.
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 1101-1103 | Añadido el domingo, 2 de abril de 2017 16:28:02
+
+Glycogen is like your wallet. Money goes in and out constantly. The wallet is easily accessible, but can only hold a limited amount of money. Fat, however, is like the money in your bank account. It is harder to access that money, but there is an unlimited storage space for energy there in your account.
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 1473-1475 | Añadido el martes, 4 de abril de 2017 23:25:44
+
+Think about foods that people say they’re “addicted” to. Pasta, bread, cookies, chocolate, chips. Notice anything? All are highly refined carbohydrates. Does anybody ever say they are addicted to fish? Apples? Beef? Spinach? Not likely. Those are all delicious foods, but not addictive. Consider some
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 2391-2394 | Añadido el domingo, 9 de abril de 2017 22:58:07
+
+Despite having a minimal effect on blood sugars, both aspartame and stevia raised insulin levels higher even than table sugar.14 Artificial sweeteners that raise insulin should be expected to be harmful, not beneficial. Artificial sweeteners may decrease calories and sugar, but not insulin. Yet it is insulin that drives weight gain and diabetes. Artificial sweeteners
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 2543-2547 | Añadido el lunes, 10 de abril de 2017 23:21:29
+
+It is no coincidence that virtually all plant foods, in their natural, unrefined state, contain fiber. Mother Nature has pre-packaged the “antidote” with the “poison.” Thus, traditional societies may follow diets high in carbohydrates without evidence of obesity or type 2 diabetes. The one critical difference is that the carbohydrates consumed by traditional societies are unrefined and unprocessed, resulting in very high fiber intake. Western diets are
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 2677-2678 | Añadido el miércoles, 12 de abril de 2017 17:53:42
+
+Sucralose in humans, for example, raises the insulin level 22 percent higher.6 The incretin effect
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 2773-2775 | Añadido el miércoles, 12 de abril de 2017 18:10:30
+
+Here’s a small tip for weight loss, one that should be obvious, but is not. If you are not hungry, don’t eat. Your body is telling you that you should not be eating. After indulging in a large meal, such as we do at Thanksgiving, we feel paranoid about skipping the next meal because
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 2802-2805 | Añadido el miércoles, 12 de abril de 2017 18:15:28
+
+There are no intrinsically bad foods, only processed ones. The further you stray from real food, the more danger you are in. Should you eat protein bars? No. Should you eat meal replacements? No. Should you drink meal replacement shakes? Absolutely not. Should you eat processed meats, processed fats or processed carbohydrates? No, no and no. While we ideally would all eat
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 3097-3099 | Añadido el miércoles, 12 de abril de 2017 23:03:21
+
+Asking how much sugar is acceptable is like asking how many cigarettes are acceptable. Ideally, no added sugar at all would be best, but that probably will not happen. Still, see the next section for some reasonable suggestions.
+==========
+The Obesity Code: Unlocking the Secrets of Weight Loss (Jason Fung)
+- La subrayado en la posición 3292-3296 | Añadido el miércoles, 12 de abril de 2017 23:27:47
+
+THERE ARE FIVE basic steps in weight loss: Reduce your consumption of added sugars. Reduced your consumption of refined grains. Moderate your protein intake. Increase your consumption of natural fats. Increase your consumption of fiber and vinegar.
+==========
+El Cisne Negro (Nassim Taleb)
+- La subrayado en la posición 1522-1524 | Añadido el miércoles, 10 de mayo de 2017 23:41:45
+
+De aquí que la misma condición que nos hace simplificar nos empuja a pensar que el mundo es menos aleatorio de lo que realmente es. Y el Cisne Negro
+==========
+El Cisne Negro (Nassim Taleb)
+- La subrayado en la posición 2989-2990 | Añadido el viernes, 26 de mayo de 2017 23:34:33
+
+Es verdad que no cabe esperar mucho de psicólogos como los de 1965, pero parece que estos resultados se repiten en todas las disciplinas.
+==========
+El Monje Que Vendió Su Ferrari(c.3) (Robin Sharma)
+- La subrayado en la posición 586-587 | Añadido el lunes, 3 de julio de 2017 18:00:51
+
+no puedes saber lo que se siente en la cumbre de la montaña si antes no has visitado el más hondo de los valles. ¿Entiendes?
+==========
+El Monje Que Vendió Su Ferrari(c.3) (Robin Sharma)
+- La subrayado en la posición 876-876 | Añadido el martes, 4 de julio de 2017 16:43:22
+
+«No hay nada noble en ser superior a otra persona. La verdadera nobleza radica en ser superior a tu antiguo yo.»
+==========
+El Monje Que Vendió Su Ferrari(c.3) (Robin Sharma)
+- La subrayado en la posición 897-902 | Añadido el martes, 4 de julio de 2017 16:46:43
+
+Dominar la mente Cultiva tu mente y florecerá más allá de tus expectativas. La calidad de la vida viene determinada por la calidad de los pensamientos. No existen los errores, sólo las lecciones. Considerar los reveses como oportunidades de expansión personal y crecimiento espiritual • El Corazón de la Rosa • Pensamiento Opuesto • El Secreto del Lago El secreto de la felicidad es simple: averigua qué es lo que te gusta hacer y dirige todas tus energías hacia ello. Haciendo esto, la abundancia iluminará tu vida y todos tus deseos se cumplirán sin esfuerzo.
+==========
+Implementing Domain-Driven Design (Vernon, Vaughn)
+- La subrayado en la posición 593-594 | Añadido el domingo, 24 de septiembre de 2017 23:14:48
+
+Applying Domain-Driven Design and Patterns: With Examples in C# and .NET by Jimmy Nilsson
+==========
+Las legiones malditas (Santiago Posteguillo)
+- La subrayado en la posición 1684-1685 | Añadido el sábado, 7 de octubre de 2017 23:08:16
+
+Aquél cuyos oídos están tan cerrados a la verdad hasta el punto que no puede escucharla de boca de un amigo, puede darse por perdido.
+==========
+Working Effectively with Legacy Code (Michael C. Feathers)
+- La subrayado en la posición 1742-1743 | Añadido el sábado, 21 de julio de 2018 23:43:42
+
+In fact, if you can’t present a compelling case to your coworkers, you might get beat up in the parking lot or, worse, ignored for the rest of your workdays, so let me help you make that case. The biggest obstacle
+==========
+The Righteous Mind: Why Good People Are Divided by Politics and Religion (Jonathan Haidt)
+- La subrayado en la posición 1670-1671 | Añadido el domingo, 9 de diciembre de 2018 0:44:18
+
+“skilled arguers … are not after the truth but after arguments supporting their views.”50
+==========
+The Righteous Mind: Why Good People Are Divided by Politics and Religion (Jonathan Haidt)
+- La subrayado en la posición 2039-2039 | Añadido el domingo, 23 de diciembre de 2018 22:59:14
+
+between morality and food 2,300 years ago when
+==========
+The Righteous Mind: Why Good People Are Divided by Politics and Religion (Jonathan Haidt)
+- La subrayado en la posición 2252-2253 | Añadido el jueves, 27 de diciembre de 2018 13:07:28
+
+one younger. Both are fully attentive to the procedure, but the older nurse occasionally
+==========
+The Righteous Mind: Why Good People Are Divided by Politics and Religion (Jonathan Haidt)
+- La subrayado en la posición 2804-2804 | Añadido el martes, 1 de enero de 2019 14:44:00
+
+Intuitions come first, strategic reasoning second.
+==========
+The Righteous Mind: Why Good People Are Divided by Politics and Religion (Jonathan Haidt)
+- La subrayado en la posición 4606-4607 | Añadido el domingo, 10 de marzo de 2019 22:44:52
+
+Moral systems are interlocking sets of values, virtues, norms, practices, identities, institutions, technologies, and evolved psychological mechanisms that work together to suppress or regulate self-interest and make cooperative societies possible.
+==========
+The Righteous Mind: Why Good People Are Divided by Politics and Religion (Jonathan Haidt)
+- La subrayado en la posición 4938-4939 | Añadido el domingo, 7 de abril de 2019 22:23:10
+
+Conservatives believe that people are inherently imperfect and are prone to act badly when all constraints and accountability are removed
+==========
+The Righteous Mind: Why Good People Are Divided by Politics and Religion (Jonathan Haidt)
+- La subrayado en la posición 4939-4941 | Añadido el domingo, 7 de abril de 2019 22:23:30
+
+Our reasoning is flawed and prone to overconfidence, so it’s dangerous to construct theories based on pure reason, unconstrained by intuition and historical experience
+==========
+Sapiens (Yuval Noah Harari)
+- La subrayado en la posición 6788-6789 | Añadido el domingo, 12 de mayo de 2019 20:42:04
+
+La recomendación de Buda fue detener no solo la búsqueda de los logros externos, sino también la búsqueda de los sentimientos internos.
+==========
+Sapiens (Yuval Noah Harari)
+- La subrayado en la posición 6766-6770 | Añadido el domingo, 12 de mayo de 2019 20:43:23
+
+Según el budismo, la raíz del sufrimiento no es ni la sensación de dolor ni la tristeza, ni siquiera la falta de sentido. Más bien, el origen real del sufrimiento es la búsqueda continua e inútil de sensaciones fugaces, que hace que estemos en un estado de tensión constante, de desazón y de insatisfacción. Debido a esta búsqueda, la mente nunca está satisfecha. Incluso cuando experimenta placer no está contenta, porque teme que esta sensación desaparezca pronto, y anhela que dicha sensación permanezca y se intensifique.
+==========
+Sapiens (Yuval Noah Harari)
+- La subrayado en la posición 6770-6776 | Añadido el domingo, 12 de mayo de 2019 20:43:30
+
+La gente se libera del sufrimiento no cuando experimenta este o aquel placer pasajero, sino cuando comprende la naturaleza no permanente de todas sus sensaciones y deja de anhelarlas. Este es el objetivo de las prácticas budistas de meditación. En la meditación se supone que uno observa de cerca su mente y su cuerpo, presencia la aparición y desaparición incesante de todas sus sensaciones, y se da cuenta de lo inútil que es intentar conseguirlas. Cuando la búsqueda se detiene, la mente se vuelve más relajada, clara y satisfecha. Siguen surgiendo y pasando todo tipo de sensaciones (alegría, ira, aburrimiento, lujuria), pero cuando uno deja de anhelar sensaciones concretas, estas se aceptan sencillamente por lo que son. Uno vive en el momento presente en lugar de fantasear acerca de lo que pudo haber sido.
+==========
+Homo Deus (Yuval Noah Harari)
+- La subrayado en la posición 612-614 | Añadido el domingo, 19 de mayo de 2019 7:39:07
+
+En Perú, Guatemala, Filipinas y Albania (países en vías de desarrollo con pobreza e inestabilidad política), cada año se suicida una de cada 100.000 personas. En países ricos y pacíficos como Suiza, Francia, Japón y Nueva Zelanda, anualmente se quitan la vida 25 de cada 100.000 personas.
+==========
+Agile Technical Practices Distilled (Pedro Moreira Santos, Marco Consolaro and Alessandro Di Gioia)
+- La subrayado en la posición 463-464 | Añadido el domingo, 13 de octubre de 2019 15:34:16
+
+Classic TDD is the original approach to TDD created by Kent Beck. It is also known as the Detroit/Chicago school of TDD. This
+==========
+Agile Technical Practices Distilled (Pedro Moreira Santos, Marco Consolaro and Alessandro Di Gioia)
+- La subrayado en la posición 515-516 | Añadido el domingo, 13 de octubre de 2019 15:39:48
+
+Take special care to not start implementing a combination of distinct behaviors before they are tested independently.
+==========
+Agile Technical Practices Distilled (Pedro Moreira Santos, Marco Consolaro and Alessandro Di Gioia)
+- La subrayado en la posición 645-646 | Añadido el domingo, 27 de octubre de 2019 15:40:26
+
+what the assertion should look like for the behavior I’m testing.
+==========
+Agile Technical Practices Distilled (Pedro Moreira Santos, Marco Consolaro and Alessandro Di Gioia)
+- La subrayado en la posición 809-809 | Añadido el domingo, 3 de noviembre de 2019 1:51:38
+
+If we end up with too many if statements, one option is to refactor them into a lookup table.
+==========
+Agile Technical Practices Distilled (Pedro Moreira Santos, Marco Consolaro and Alessandro Di Gioia)
+- La subrayado en la posición 814-816 | Añadido el domingo, 3 de noviembre de 2019 1:52:42
+
+We want to use tail recursion5 even if our language compiler does not optimize for it. Grossly oversimplifying, the recursive function call should be the last thing we execute in an expression.
+==========
+Agile Technical Practices Distilled (Pedro Moreira Santos, Marco Consolaro and Alessandro Di Gioia)
+- La subrayado en la posición 821-822 | Añadido el domingo, 3 de noviembre de 2019 1:55:53
+
+We should not mutate any variables until we reach this transformation. This is why previous transformations favored recursion over loops. Traditional loops in imperative languages tend to rely on variable mutation.
+==========
+The Simple Path to Wealth: Your road map to financial independence and a rich, free life (J Collins)
+- El marcador en la posición 2923 | Añadido el lunes, 25 de noviembre de 2019 0:06:55
+
+
+==========
+Los cuatro pilares de la inversión (Spanish Edition) (Bernstein, William)
+- La subrayado en la posición 277-279 | Añadido el lunes, 3 de febrero de 2020 23:44:44
+
+A lo largo de los últimos doscientos años, cada 1% desembolsado anualmente reduce la cantidad final por un factor de ocho. Por ejemplo, una reducción del 1% en los beneficios reducirá la cantidad de beneficio final de 23 millones de dólares a unos 3 millones, mientras que un 2% de reducción lo dejará en unos 400.000 dólares.
+==========
+Los cuatro pilares de la inversión (Spanish Edition) (Bernstein, William)
+- La subrayado en la posición 281-283 | Añadido el lunes, 3 de febrero de 2020 23:45:01
+
+Para información de los principiantes, este gráfico ignora las comisiones e impuestos, que habrían hecho disminuir los beneficios en otro uno o dos por ciento, reduciendo una fortuna potencial de 23 millones de dólares a las cantidades arriba mencionadas.
+==========
+Los cuatro pilares de la inversión (Spanish Edition) (Bernstein, William)
+- La subrayado en la posición 2062-2064 | Añadido el sábado, 22 de febrero de 2020 6:48:14
+
+Éste es un patrón con el que nos toparemos reiteradamente: en el ámbito de los profesionales de las finanzas, los mejores resultados pueden explicarse fácilmente por el azar, mientras que los peores parecen ser fruto de una persistente y casi misteriosa incompetencia.
+==========
+Los cuatro pilares de la inversión (Spanish Edition) (Bernstein, William)
+- La subrayado en la posición 5418-5418 | Añadido el miércoles, 18 de marzo de 2020 23:17:25
+
+Devil Take the Hindmost, de Edward Chancellor. Una
+==========
+Los cuatro pilares de la inversión (Spanish Edition) (Bernstein, William)
+- La subrayado en la posición 6279-6281 | Añadido el domingo, 22 de marzo de 2020 23:59:18
+
+Finalmente, dado que nuestras estimaciones en torno a la rentabilidad futura de acciones y bonos son muy rigurosas, no tiene mucho sentido poseer más del 80% de acciones, más allá de lo agresivo y tolerante al riesgo que usted sea.
+==========
+Soft Skills: The software developer's life manual (John Sonmez)
+- La subrayado en la posición 1350-1350 | Añadido el viernes, 3 de abril de 2020 22:35:49
+
+Keep a daily log of your activities— Send
+==========
+Soft Skills: The software developer's life manual (John Sonmez)
+- La subrayado en la posición 1350-1354 | Añadido el viernes, 3 de abril de 2020 22:36:01
+
+Keep a daily log of your activities— Send this log as a weekly report to your manager. Offer to give presentations or trainings— Pick a topic that would be useful to your team. Speak up— Do this at meetings and any time you get the chance. Be seen— Set up regular meetings with your boss. Make sure you are seen often.
+==========
+Soft Skills: The software developer's life manual (John Sonmez)
+- La subrayado en la posición 1394-1395 | Añadido el viernes, 3 de abril de 2020 22:40:00
+
+Decide what would be the most valuable thing to educate yourself on and create a plan to get that education
+==========
+Soft Skills: The software developer's life manual (John Sonmez)
+- La subrayado en la posición 2037-2039 | Añadido el miércoles, 8 de abril de 2020 22:51:06
+
+For that reason, it’s better to project an aura of confidence and capability, knowing that you’ve faced challenges in the past, you rose up to meet them, and there’s no reason to believe you won’t do the same in the future.
+==========
+Soft Skills: The software developer's life manual (John Sonmez)
+- La subrayado en la posición 2210-2212 | Añadido el viernes, 10 de abril de 2020 13:50:13
+
+The real difference between great musicians and superstars is nothing more than marketing. Marketing is a multiplier for talent. The better marketing you have, the more it magnifies your talent. That’s why it’s critical for you, as a software developer, to learn this crucial skill.
+==========

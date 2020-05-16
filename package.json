@@ -1,0 +1,19 @@
+{
+  "name": "myclippingstomarkdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "parser.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab_p:jpallares/myclippings-to-markdown.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
