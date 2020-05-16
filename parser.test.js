@@ -8,12 +8,12 @@ describe('MyClippings to Mardown parser should', () => {
     myClippings = fs.readFileSync('My Clippings.txt', 'utf8');
   });
 
-test('split clippings', () => {
+test('split clippings removing empty ones', () => {
     const books = parse(myClippings);
 
     let totalClippings = 0;
     books.map(b => totalClippings += b.quotes.length);
-    expect(totalClippings).toBe(76);
+    expect(totalClippings).toBe(72);
   });
 
 test('map every quote', () => {
@@ -32,6 +32,6 @@ test('map every quote', () => {
   test('group by books', () => {
     const result = parse(myClippings);
 
-    expect(result.length).toBe(20);
+    expect(result.length).toBe(18);
   });
 });

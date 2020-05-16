@@ -7,34 +7,44 @@ function parse(input) {
     const rawClippings = input.split(SEPARATOR).filter((clipping) => clipping != "");
     let books = [];
 
-    const processedClippings = rawClippings.map((clipping) => {
+    rawClippings.map((clipping) => {
         const [ bookData, data, empty, quote ]= clipping.trim().split('\n');
+
+        if (quote == null || quote.trim() == '')
+            return;
+
+        const datedQuote = {
+            quote: quote,
+            date: getDate(data),
+        };
 
         const currentBookName = getBookName(bookData);
 
-        var existingBooks = books.filter(b => b.book === currentBookName);
+        var existingBook = getExistingBook(books, currentBookName);
 
-        if (existingBooks.length > 0)
+        if (existingBook)
         {
-            existingBooks[0].quotes.push({
-                quote: quote,
-                date: getDate(data),
-            });
+            existingBook.quotes.push(datedQuote);
         }
         else
         {
             books.push({
-                book: getBookName(bookData),
+                book: currentBookName,
                 author: getAuthor(bookData),
-                quotes: [{
-                    quote: quote,
-                    date: getDate(data),
-                }]
+                quotes: [datedQuote]
             });
         }
     });
 
     return books;
+}
+
+function getExistingBook(books, currentBookName) {
+    const filteredBooks = books.filter(b => b.book === currentBookName);
+    if (filteredBooks.length > 0)
+        return filteredBooks[0];
+
+    return null;
 }
 
 function getDate(data) {
