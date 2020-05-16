@@ -44,18 +44,6 @@ function parse(input) {
     return books;
 }
 
-function getOldestQuoteDate(book) {
-    return book.quotes.reduce((r, o) => o.date > r.date ? o : r).date;
-}
-
-function getExistingBook(books, currentBookName) {
-    const filteredBooks = books.filter(b => b.book === currentBookName);
-    if (filteredBooks.length > 0)
-        return filteredBooks[0];
-
-    return null;
-}
-
 function getDate(data) {
     if (data) {
         const spanishDate = data.substring(data.lastIndexOf(",") + 2, data.lenght).trim();
@@ -69,8 +57,20 @@ function getBookName(bookData) {
     return bookData.substring(0, bookData.lastIndexOf("(")).trim();
 }
 
+function getExistingBook(books, currentBookName) {
+    const filteredBooks = books.filter(b => b.book === currentBookName);
+    if (filteredBooks.length > 0)
+        return filteredBooks[0];
+
+    return null;
+}
+
 function getAuthor(bookData) {
     return bookData.substring(bookData.lastIndexOf("(") + 1, bookData.lastIndexOf(")"));
+}
+
+function getOldestQuoteDate(book) {
+    return book.quotes.reduce((r, o) => o.date > r.date ? o : r).date;
 }
 
 module.exports = parse;
