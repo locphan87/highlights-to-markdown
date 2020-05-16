@@ -37,7 +37,15 @@ function parse(input) {
         }
     });
 
+    books.map((book) => {
+        book.date = getOldestQuoteDate(book);
+    })
+
     return books;
+}
+
+function getOldestQuoteDate(book) {
+    return book.quotes.reduce((r, o) => o.date > r.date ? o : r).date;
 }
 
 function getExistingBook(books, currentBookName) {

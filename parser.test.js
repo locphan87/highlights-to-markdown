@@ -21,6 +21,7 @@ test('map every quote', () => {
 
     expect(result[1]).toStrictEqual({
       book: 'Scrum And Xp From The Trenches',
+      date: '2015-02-21',
       author: 'Henrik Kniberg',
       quotes: [{
         date: '2015-02-21',
@@ -34,4 +35,11 @@ test('map every quote', () => {
 
     expect(result.length).toBe(18);
   });
+
+  test('set oldest clipping date to book', () => {
+    const result = parse(myClippings);
+
+    expect(result[2].date).toStrictEqual('2016-02-10');
+  });
 });
+
