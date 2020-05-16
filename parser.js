@@ -4,9 +4,9 @@ const SEPARATOR = '==========';
 const DATE_FORMAT = 'D [escaped] MMMM [escaped] YYYY H:mm:ss';
 
 function parse(input) {
-    const rawQuotes = input.split(SEPARATOR).filter((clipping) => clipping != "");
+    const rawClippings = input.split(SEPARATOR).filter((clipping) => clipping != "");
 
-    const processedQuotes = rawQuotes.map((clipping) => {
+    const processedClippings = rawClippings.map((clipping) => {
         const [ bookData, data, empty, quote ]= clipping.trim().split('\n');
 
         return {
@@ -17,7 +17,7 @@ function parse(input) {
         }
     });
 
-    return processedQuotes;
+    return processedClippings;
 }
 
 function getDate(data) {
