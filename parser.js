@@ -19,9 +19,9 @@ function parse(input) {
             date: getDate(data),
         };
 
-        const currentBookName = getBookName(bookData);
+        const currentBookTitle = getBookTitle(bookData);
 
-        var existingBook = getExistingBook(books, currentBookName);
+        var existingBook = getExistingBook(books, currentBookTitle);
 
         if (existingBook)
         {
@@ -30,7 +30,7 @@ function parse(input) {
         else
         {
             books.push({
-                book: currentBookName,
+                title: currentBookTitle,
                 author: getAuthor(bookData),
                 quotes: [datedQuote]
             });
@@ -53,12 +53,12 @@ function getDate(data) {
     return "";
 }
 
-function getBookName(bookData) {
+function getBookTitle(bookData) {
     return bookData.substring(0, bookData.lastIndexOf("(")).trim();
 }
 
-function getExistingBook(books, currentBookName) {
-    const filteredBooks = books.filter(b => b.book === currentBookName);
+function getExistingBook(books, currentBookTitle) {
+    const filteredBooks = books.filter(b => b.title === currentBookTitle);
     if (filteredBooks.length > 0)
         return filteredBooks[0];
 

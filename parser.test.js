@@ -20,7 +20,7 @@ test('map every quote', () => {
     const result = parse(myClippings);
 
     expect(result[1]).toStrictEqual({
-      book: 'Scrum And Xp From The Trenches',
+      title: 'Scrum And Xp From The Trenches',
       date: '2015-02-21',
       author: 'Henrik Kniberg',
       quotes: [{

@@ -4,7 +4,8 @@
   "description": "",
   "main": "parser.js",
   "dependencies": {
-    "moment": "^2.25.3"
+    "moment": "^2.25.3",
+    "mustache": "^4.0.1"
   },
   "devDependencies": {
     "jest": "^26.0.1"
