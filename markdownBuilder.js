@@ -8,7 +8,7 @@ function markdownBuilder(books) {
 
         var fileContent = mustache.render(templates.bookTemplate, book);
 
-        let fileName = `${book.date}-${book.title.replace(/\W+/g, '-').toLowerCase()}.md`
+        let fileName = `${book.date}-${book.title.replace('&#58;','').replace(/\W+/g, '-').toLowerCase()}.md`
 
         fs.writeFileSync(fileName, fileContent);
     })
