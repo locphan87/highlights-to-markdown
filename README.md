@@ -15,7 +15,49 @@ The quotes are ordered by date descending. The books have the date of the most r
 It works also with only the first argument using `output` as default output folder.
 It works also with no parameters but expects to find the `My Clippings.txt` in the project folder.
 
-In case you want another type of output, there is a middle step (parse) were simple array of objects (books) is created with the following structure:
+## Jekyll site usage
+
+1. Create a _books folder in your jekyll repo and move there all the generated md files.
+1. Add the collection to your `_config.yml`:
+
+```
+collections:
+  books:
+    output: true
+    permalink: /:collection/:path/
+```
+
+3. Add a navigation link in the top bar editing `navigation.yml`:
+
+```
+main: 
+- title: cv
+  url: /cv/
+- title: books
+  url: /books/
+```
+
+4. Finally create a page that will have the links to all the books. I created `books.md`:
+
+```
+---
+title: Books
+layout: single
+permalink: /books/
+collection: books
+---
+
+some text
+
+{% for book in site.books reversed %}
+### [{{ book.title }}]({{ book.url }})
+*{{ book.bookauthor }}*
+{% endfor %}
+```
+
+## I want just the JSON
+
+In case you want another type of output, there is a middle step (parse) were a simple array of objects (books) is created with the following structure:
 ```
 [
     {
