@@ -1,9 +1,12 @@
 
 const fs = require('fs');
+const path = require('path');
+
 const markdownBuilder = require('./markdownBuilder');
 
 const EXPECTED_PATH_1 = 'scrum-and-xp-from-the-trenches.md'
 const EXPECTED_PATH_2 = 'another-book.md'
+const OUTPUT_PATH = 'output'
 
 const books = [{
         title: 'Scrum And Xp&#58; From The Trenches',
@@ -32,23 +35,23 @@ const books = [{
 
 describe('markdownBuilder should', () => {
     afterAll(() => {
-        fs.unlinkSync(EXPECTED_PATH_1)
-        fs.unlinkSync(EXPECTED_PATH_2)
+        fs.unlinkSync(path.join(OUTPUT_PATH,EXPECTED_PATH_1))
+        fs.unlinkSync(path.join(OUTPUT_PATH,EXPECTED_PATH_2))
       });
 
   test('create a md file with correct name for each book', () => {
 
-        markdownBuilder(books);
+        markdownBuilder(books, OUTPUT_PATH);
 
-        expect(fs.existsSync(EXPECTED_PATH_1, 'utf8')).toBe(true);
-        expect(fs.existsSync(EXPECTED_PATH_2, 'utf8')).toBe(true);
+        expect(fs.existsSync(path.join(OUTPUT_PATH,EXPECTED_PATH_1), 'utf8')).toBe(true);
+        expect(fs.existsSync(path.join(OUTPUT_PATH,EXPECTED_PATH_2), 'utf8')).toBe(true);
     });
 
     test('create md files with proper data', () => {
   
-          markdownBuilder(books);
+          markdownBuilder(books, OUTPUT_PATH);
   
-          expect(fs.readFileSync(EXPECTED_PATH_1, 'utf8')).toStrictEqual(
+          expect(fs.readFileSync(path.join(OUTPUT_PATH,EXPECTED_PATH_1), 'utf8')).toStrictEqual(
 `---
 title: Scrum And Xp&#58; From The Trenches
 bookauthor: Henrik Kniberg
