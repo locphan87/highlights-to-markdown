@@ -15,7 +15,7 @@ function parse(input) {
             return;
 
         const datedQuote = {
-            quote: quote,
+            quote: parseColons(quote),
             date: getDate(data),
         };
 
@@ -44,6 +44,10 @@ function parse(input) {
     return books;
 }
 
+function parseColons(input){
+    return input.replace(':','&#58;');
+}
+
 function getDate(data) {
     if (data) {
         const spanishDate = data.substring(data.lastIndexOf(",") + 2, data.lenght).trim();
@@ -54,7 +58,7 @@ function getDate(data) {
 }
 
 function getBookTitle(bookData) {
-    return bookData.substring(0, bookData.lastIndexOf("(")).trim();
+    return  parseColons(bookData.substring(0, bookData.lastIndexOf("(")).trim());
 }
 
 function getExistingBook(books, currentBookTitle) {
