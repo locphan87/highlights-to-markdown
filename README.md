@@ -1,6 +1,6 @@
 # MyClippings to Markdown
 
-Node app to parses the kindle file that stores all the highlights you do in the books you read (My Clippings.txt) and creates a Markdown file per book grouping the quotes. It is intended to be used with Jekyll.
+Node app to parses the kindle file that stores all the highlights you do in the books you read (My Clippings.txt) and creates a Markdown file per book grouping the quotes. It is intended to be used with Jekyll. It links to the book cover image too.
 [Example of the output](https://juan.pallares.me/books/)
 
 The quotes are ordered by date descending. The books have the date of the most recent quote assigned.
