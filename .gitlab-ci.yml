@@ -1,0 +1,10 @@
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - npm i
+    - npm test
+  only:
+    - branch

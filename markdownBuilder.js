@@ -4,15 +4,21 @@ const mustache = require('mustache');
 
 const templates = require('./templates');
 
-function markdownBuilder(books, outputPath) {
-    books.map((book) => {
+function markdownBuilder(books) {
+  books.map((book) => {
+    var fileContent = mustache.render(templates.bookTemplate, book);
 
-        var fileContent = mustache.render(templates.bookTemplate, book);
+    let fileName = `${book.title
+      .replace('&#58;', '')
+      .replace(/\W+/g, '-')
+      .toLowerCase()}.md`;
 
-        let fileName = `${book.title.replace('&#58;','').replace(/\W+/g, '-').toLowerCase()}.md`
-
-        fs.writeFileSync(path.join(outputPath,fileName), fileContent);
-    })
+    try {
+      fs.writeFileSync(fileName, fileContent);
+    } catch (error) {
+      console.log('ERROR WRITING = ', error.message);
+    }
+  });
 }
 
 module.exports = markdownBuilder;
