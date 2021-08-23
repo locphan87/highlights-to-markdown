@@ -41,7 +41,10 @@ async function parse(input) {
   });
 
   for (const book of books) {
-    await getCoverUrl(book.title, book.author);
+    const coverUrl = await getCoverUrl(book.title, book.author);
+    if (coverUrl){
+      book.coverUrl = coverUrl;
+    }
   }
 
   return books;
@@ -87,17 +90,19 @@ function getOldestQuoteDate(book) {
 }
 
 async function getCoverUrl(title, author){
-  const url = `https://openlibrary.org/search.json?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`;
+  const getISBNurl = `https://openlibrary.org/search.json?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`;
   let coverUrl;
   try {
-    const result = await axios.get(url);
+    const result = await axios.get(getISBNurl);
     if (result.data.docs.length > 0){
       const ISBN = result.data.docs[0].isbn[0];
-      console.log('ISBN', ISBN)
+      coverUrl = `https://covers.openlibrary.org/b/isbn/${ISBN}-L.jpg`;
     }
   } catch (error) {
     console.log('ERROR => ', error.message);
   }
+
+  return coverUrl;
 }
 
 module.exports = parse;
