@@ -1,10 +1,11 @@
+const axios = require('axios');
 const moment = require('moment');
 
 const SEPARATOR = '==========';
 const INPUT_DATE_FORMAT = 'D [escaped] MMMM [escaped] YYYY H:mm:ss';
 const OUTPUT_DATE_FORMAT = 'YYYY-MM-DD';
 
-function parse(input) {
+async function parse(input) {
   const rawClippings = input
     .split(SEPARATOR)
     .filter((clipping) => clipping != '');
@@ -38,6 +39,10 @@ function parse(input) {
   books.map((book) => {
     book.date = getOldestQuoteDate(book);
   });
+
+  for (const book of books) {
+    await getCoverUrl(book.title, book.author);
+  }
 
   return books;
 }
@@ -79,6 +84,20 @@ function getAuthor(bookData) {
 
 function getOldestQuoteDate(book) {
   return book.quotes.reduce((r, o) => (o.date > r.date ? o : r)).date;
+}
+
+async function getCoverUrl(title, author){
+  const url = `https://openlibrary.org/search.json?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`;
+  let coverUrl;
+  try {
+    const result = await axios.get(url);
+    if (result.data.docs.length > 0){
+      const ISBN = result.data.docs[0].isbn[0];
+      console.log('ISBN', ISBN)
+    }
+  } catch (error) {
+    console.log('ERROR => ', error.message);
+  }
 }
 
 module.exports = parse;

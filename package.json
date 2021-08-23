@@ -4,6 +4,7 @@
   "description": "",
   "main": "parser.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "moment": "^2.25.3",
     "mustache": "^4.0.1"
   },

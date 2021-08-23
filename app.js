@@ -1,6 +1,7 @@
 const fs = require('fs');
 
-const parse = require('./parser');
+const app = (async () => {
+    const parse = require('./parser');
 const markdownBuilder = require('./markdownBuilder');
 
 var fileName = 'My Clippings.txt';
@@ -12,7 +13,10 @@ if (process.argv[3]) outputPath = process.argv[3];
 
 var myClippingsFile = fs.readFileSync(fileName, 'utf8');
 
-var books = parse(myClippingsFile);
+var books = await parse(myClippingsFile);
 console.log('outputPath: ', outputPath);
 
 markdownBuilder(books, outputPath);
+});
+
+app();

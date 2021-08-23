@@ -1,23 +1,28 @@
 const fs = require('fs');
 const parse = require('./parser');
+const axios = require('axios');
+
+jest.mock('axios');
 
 describe('MyClippings parser should', () => {
   let myClippings;
+
+  axios.get.mockImplementation(() => Promise.resolve({data:{docs:[]}}))
 
   beforeEach(() => {
     myClippings = fs.readFileSync('My Clippings.txt', 'utf8');
   });
 
-  test('split clippings removing empty ones', () => {
-    const books = parse(myClippings);
+  test('split clippings removing empty ones', async () => {
+    const books = await parse(myClippings);
 
     let totalClippings = 0;
     books.map((b) => (totalClippings += b.quotes.length));
     expect(totalClippings).toBe(72);
   });
 
-  test('map every quote', () => {
-    const result = parse(myClippings);
+  test('map every quote', async () => {
+    const result = await parse(myClippings);
 
     expect(result[1]).toStrictEqual({
       title: 'Scrum And Xp From The Trenches',
@@ -33,8 +38,8 @@ describe('MyClippings parser should', () => {
     });
   });
 
-  test('parse colon to avoid errors', () => {
-    const result = parse(`hola:hola (pepe)
+  test('parse colon to avoid errors', async () => {
+    const result = await parse(`hola:hola (pepe)
 - Tu subrayado en la posición 773-774 | Añadido el miércoles, 27 de enero de 2016 20:04:07
 
 test :    test
@@ -53,14 +58,14 @@ test :    test
     });
   });
 
-  test('group by books', () => {
-    const result = parse(myClippings);
+  test('group by books', async () => {
+    const result = await parse(myClippings);
 
     expect(result.length).toBe(18);
   });
 
-  test('set oldest clipping date to book', () => {
-    const result = parse(myClippings);
+  test('set oldest clipping date to book', async () => {
+    const result = await parse(myClippings);
 
     expect(result[2].date).toStrictEqual('2016-02-10');
   });
