@@ -2,7 +2,6 @@ exports.bookTemplate = `---
 title: {{&title}}
 bookauthor: {{&author}}
 date: {{date}}
-position: {{position}}
 quotes:
 {{#quotes}}
   - date: {{date}}

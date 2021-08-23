@@ -10,7 +10,6 @@ const books = [
     title: 'another book',
     author: 'ahoter author',
     date: '2000-01-01',
-    position: 2,
     quotes: [
       {
         date: '2015-02-21',
@@ -22,7 +21,6 @@ const books = [
     title: 'Scrum And Xp&#58; From The Trenches',
     author: 'Henrik Kniberg',
     date: '2015-02-21',
-    position: 1,
     quotes: [
       {
         date: '2015-02-21',
@@ -58,7 +56,6 @@ describe('markdownBuilder should', () => {
 title: Scrum And Xp&#58; From The Trenches
 bookauthor: Henrik Kniberg
 date: 2015-02-21
-position: 1
 quotes:
   - date: 2015-02-21
     quote: Pair programming does improve code quality&#58; Pair programming does improve team focus...

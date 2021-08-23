@@ -39,17 +39,11 @@ function parse(input) {
     book.date = getOldestQuoteDate(book);
   });
 
-  const size = books.length;
-  for (let index = 0; index < size; index++) {
-    const book = books[index];
-    book.position = size - index;
-  }
-
   return books;
 }
 
 function parseColons(input) {
-  return input.replace(':', '&#58;');
+  return input.replaceAll('#', '&#35').replaceAll(':', '&#58;');
 }
 
 function getDate(data) {

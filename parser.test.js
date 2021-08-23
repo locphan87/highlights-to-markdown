@@ -22,7 +22,6 @@ describe('MyClippings parser should', () => {
     expect(result[1]).toStrictEqual({
       title: 'Scrum And Xp From The Trenches',
       date: '2015-02-21',
-      position: 17,
       author: 'Henrik Kniberg',
       quotes: [
         {
@@ -44,7 +43,6 @@ test :    test
     expect(result[0]).toStrictEqual({
       title: 'hola&#58;hola',
       date: '2016-01-27',
-      position: 1,
       author: 'pepe',
       quotes: [
         {
@@ -65,12 +63,5 @@ test :    test
     const result = parse(myClippings);
 
     expect(result[2].date).toStrictEqual('2016-02-10');
-  });
-
-  test('set position in reverse order', () => {
-    const result = parse(myClippings);
-
-    expect(result[0].position).toStrictEqual(result.length);
-    expect(result[result.length - 1].position).toStrictEqual(1);
   });
 });

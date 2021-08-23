@@ -4,7 +4,7 @@ const mustache = require('mustache');
 
 const templates = require('./templates');
 
-function markdownBuilder(books) {
+function markdownBuilder(books, outputPath = '') {
   books.map((book) => {
     var fileContent = mustache.render(templates.bookTemplate, book);
 
@@ -14,7 +14,7 @@ function markdownBuilder(books) {
       .toLowerCase()}.md`;
 
     try {
-      fs.writeFileSync(fileName, fileContent);
+      fs.writeFileSync(path.join(outputPath, fileName), fileContent);
     } catch (error) {
       console.log('ERROR WRITING = ', error.message);
     }
