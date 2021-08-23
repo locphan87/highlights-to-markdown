@@ -13,7 +13,7 @@ quotes:
 {{=<% %>=}}
 ## *{{page.bookauthor}}*
 
-<img width="200" src="{{ page.header.teaser }}"/>
+<img width="300" src="{{ page.header.teaser }}"/>
 
 {% for quote in page.quotes reversed %}
 #### {{ quote.date | date: '%B %d, %Y' }}
