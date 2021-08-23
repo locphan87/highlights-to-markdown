@@ -17,20 +17,40 @@ It works also with no parameters but expects to find the `My Clippings.txt` in t
 
 ## Jekyll site usage
 
-1. Create a _books folder in your jekyll repo and move there all the generated md files.
+1. Create a \_books folder in your jekyll repo and move there all the generated md files.
 1. Add the collection to your `_config.yml`:
 
 ```
+include:
+  - _books
+
+...
+
 collections:
   books:
     output: true
     permalink: /:collection/:path/
+
+...
+
+defaults:
+  ...
+  # _books
+  - scope:
+      path: ""
+      type: books
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+
 ```
 
 3. Add a navigation link in the top bar editing `navigation.yml`:
 
 ```
-main: 
+main:
 - title: cv
   url: /cv/
 - title: books
@@ -58,6 +78,7 @@ some text
 ## I want just the JSON
 
 In case you want another type of output, there is a middle step (parse) were a simple array of objects (books) is created with the following structure:
+
 ```
 [
     {
@@ -92,6 +113,3 @@ In case you want another type of output, there is a middle step (parse) were a s
     }
 ]
 ```
-
-
-
