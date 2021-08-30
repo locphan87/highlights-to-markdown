@@ -20,7 +20,7 @@ It works also with no parameters but expects to find the `My Clippings.txt` in t
 1. Create a \_books folder in your jekyll repo and move there all the generated md files.
 1. Add the collection to your `_config.yml`:
 
-```
+```yml
 include:
   - _books
 
@@ -44,12 +44,11 @@ defaults:
       author_profile: true
       share: true
       comments: true
-
 ```
 
-3. Add a navigation link in the top bar editing `navigation.yml`:
+3. Add a navigation link in the top bar editing `navigation.yml` inside `_data` folder:
 
-```
+```yml
 main:
 - title: cv
   url: /cv/
@@ -57,22 +56,18 @@ main:
   url: /books/
 ```
 
-4. Finally create a page that will have the links to all the books. I created `books.md`:
+4. Finally create a page that will have the links to all the books. I created `books.md` and put it inside `_pages` folder:
 
-```
+```yml
 ---
 title: Books
-layout: single
+layout: collection
 permalink: /books/
 collection: books
+entries_layout: grid
+classes: wide
+sort_order: reverse
 ---
-
-some text
-
-{% for book in site.books reversed %}
-### [{{ book.title }}]({{ book.url }})
-*{{ book.bookauthor }}*
-{% endfor %}
 ```
 
 ## I want just the JSON
