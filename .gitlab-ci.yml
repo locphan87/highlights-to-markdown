@@ -1,3 +1,5 @@
+image: node:16
+
 stages:
   - test
 
@@ -6,5 +8,3 @@ test:
   script:
     - npm i
     - npm test
-  only:
-    - branch

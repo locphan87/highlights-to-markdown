@@ -24,6 +24,7 @@ const books = [
     quotes: [
       {
         date: '2015-02-21',
+        chapter: 'example chapter',
         quote:
           'Pair programming does improve code quality&#58; Pair programming does improve team focus...',
       },
@@ -56,16 +57,22 @@ describe('markdownBuilder should', () => {
 title: Scrum And Xp&#58; From The Trenches
 bookauthor: Henrik Kniberg
 date: 2015-02-21
+header:
+  teaser: 
 quotes:
   - date: 2015-02-21
+    chapter: example chapter
     quote: Pair programming does improve code quality&#58; Pair programming does improve team focus...
   - date: 2015-02-19
+    chapter: 
     quote: test
 ---
 ## *{{page.bookauthor}}*
 
+<img width="300" src="{{ page.header.teaser }}"/>
+
 {% for quote in page.quotes reversed %}
-#### {{ quote.date | date: '%B %d, %Y' }}
+#### {{ quote.date | date: '%B %d, %Y' }} {{ quote.chapter}}
 {{ quote.quote }}
 {% endfor %}
 `

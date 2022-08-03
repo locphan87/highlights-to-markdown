@@ -14,11 +14,22 @@ function markdownBuilder(books, outputPath = '') {
       .toLowerCase()}.md`;
 
     try {
-      fs.writeFileSync(path.join(outputPath, fileName), fileContent);
+      var filePath = path.join(outputPath, fileName);
+      ensureDirectoryExistence(filePath);
+      fs.writeFileSync(filePath, fileContent);
     } catch (error) {
       console.log('ERROR WRITING = ', error.message);
     }
   });
+}
+
+function ensureDirectoryExistence(filePath) {
+  var dirname = path.dirname(filePath);
+  if (fs.existsSync(dirname)) {
+    return true;
+  }
+  ensureDirectoryExistence(dirname);
+  fs.mkdirSync(dirname);
 }
 
 module.exports = markdownBuilder;

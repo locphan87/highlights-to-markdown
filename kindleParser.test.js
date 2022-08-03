@@ -1,5 +1,5 @@
 const fs = require('fs');
-const parse = require('./parser');
+const parse = require('./kindleParser');
 const axios = require('axios');
 
 jest.mock('axios');
@@ -7,10 +7,10 @@ jest.mock('axios');
 describe('MyClippings parser should', () => {
   let myClippings;
 
-  axios.get.mockImplementation(() => Promise.resolve({data:{docs:[]}}))
+  axios.get.mockImplementation(() => Promise.resolve({ data: { docs: [] } }));
 
   beforeEach(() => {
-    myClippings = fs.readFileSync('My Clippings.txt', 'utf8');
+    myClippings = fs.readFileSync('./exampleFiles/My Clippings.txt', 'utf8');
   });
 
   test('split clippings removing empty ones', async () => {
