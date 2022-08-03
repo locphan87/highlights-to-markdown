@@ -1,9 +1,10 @@
-const axios = require('axios');
 const moment = require('moment');
 
 const SEPARATOR = '==========';
 const INPUT_DATE_FORMAT = 'D [escaped] MMMM [escaped] YYYY H:mm:ss';
 const OUTPUT_DATE_FORMAT = 'YYYY-MM-DD';
+
+const parseSymbols = require('./commonTools');
 
 async function parse(input) {
   const rawClippings = input
@@ -17,7 +18,7 @@ async function parse(input) {
     if (quote == null || quote.trim() == '') return;
 
     const datedQuote = {
-      quote: parseColons(quote),
+      quote: parseSymbols(quote),
       date: getDate(data),
     };
 
@@ -40,18 +41,7 @@ async function parse(input) {
     book.date = getOldestQuoteDate(book);
   });
 
-  for (const book of books) {
-    const coverUrl = await getCoverUrl(book.title, book.author);
-    if (coverUrl){
-      book.coverUrl = coverUrl;
-    }
-  }
-
   return books;
-}
-
-function parseColons(input) {
-  return input.replaceAll('#', '&#35').replaceAll(':', '&#58;');
 }
 
 function getDate(data) {
@@ -68,7 +58,7 @@ function getDate(data) {
 }
 
 function getBookTitle(bookData) {
-  return parseColons(bookData.substring(0, bookData.lastIndexOf('(')).trim());
+  return parseSymbols(bookData.substring(0, bookData.lastIndexOf('(')).trim());
 }
 
 function getExistingBook(books, currentBookTitle) {
@@ -87,22 +77,6 @@ function getAuthor(bookData) {
 
 function getOldestQuoteDate(book) {
   return book.quotes.reduce((r, o) => (o.date > r.date ? o : r)).date;
-}
-
-async function getCoverUrl(title, author){
-  const getISBNurl = `https://openlibrary.org/search.json?title=${encodeURIComponent(title)}&author=${encodeURIComponent(author)}`;
-  let coverUrl;
-  try {
-    const result = await axios.get(getISBNurl);
-    if (result.data.docs.length > 0){
-      const ISBN = result.data.docs[0].isbn[0];
-      coverUrl = `https://covers.openlibrary.org/b/isbn/${ISBN}-L.jpg`;
-    }
-  } catch (error) {
-    console.log('ERROR => ', error.message);
-  }
-
-  return coverUrl;
 }
 
 module.exports = parse;
