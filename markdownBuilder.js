@@ -5,7 +5,8 @@ const mustache = require('mustache');
 const templates = require('./templates');
 
 function markdownBuilder(books, outputPath = '') {
-  books.map((book) => {
+  books.map((book, index) => {
+    console.log(`${index + 1}. Building ${book.title}`);
     var fileContent = mustache.render(templates.bookTemplate, book);
 
     let fileName = `${book.title

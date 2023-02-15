@@ -24,18 +24,57 @@ const app = async () => {
     if (!sourcePath) sourcePath = 'oreilly-annotations.csv';
 
     var books = await oreillyParse(sourcePath);
-    console.log('🚀 ~ file: app.js ~ line 27 ~ app ~ books', books[0].quotes);
+    console.log('🚀 Books', books.length);
   }
 
-  for (const book of books) {
+  const bookPromises = books.map(async book => {
     const coverUrl = await getCoverUrl(book.title, book.author);
     if (coverUrl) {
-      book.coverUrl = coverUrl;
+      return { ...book, coverUrl }
+    } else {
+      const meta = await getBookMeta(book.title, book.id)
+      return {
+        ...book,
+        ...meta
+      }
     }
-  }
+  })
+  const newBooks = await Promise.all(bookPromises)
 
-  markdownBuilder(books, outputPath);
+  markdownBuilder(newBooks, outputPath);
 };
+
+async function getBookMeta(title, id) {
+  const oreillyURL = `https://learning.oreilly.com/api/v2/search/?formats=book&query=archive_id:${id}`
+  try {
+    const response = await axios.get(oreillyURL)
+    const { results: [book] } = response.data
+    const { isbn, issued, virtual_pages, publishers, description, cover_url, authors, minutes_required } = book
+    const hours = Math.floor(minutes_required / 60)
+    const minutes = Math.floor(minutes_required - hours * 60)
+    const published = new Date(issued)
+    const mapAuthor = author => {
+      const url = [
+        `https://learning.oreilly.com/search/?query=author%3A%22`,
+        `${encodeURIComponent(author)}%22&sort=relevance&highlight=true`
+      ].join('')
+      return `<a href="${url}">${author}</a>`
+    }
+    return {
+      description,
+      isbn,
+      pages: Math.floor(virtual_pages / 1.5),
+      issued: `${published.toLocaleString('default', { month: 'long' })} ${published.getFullYear()}`,
+      publishers: publishers.join(', '),
+      authors: authors.map(mapAuthor).join(', '),
+      coverUrl: cover_url,
+      duration: `${hours}h${minutes}m`
+    }
+  } catch(error) {
+    console.log('ERROR getBookMeta => ', error.message, title, id);
+    return {}
+  }
+}
 
 async function getCoverUrl(title, author) {
   let getISBNurl = `https://openlibrary.org/search.json?title=${encodeURIComponent(
@@ -45,12 +84,13 @@ async function getCoverUrl(title, author) {
   let coverUrl;
   try {
     const result = await axios.get(getISBNurl);
-    if (result.data.docs.length > 0) {
-      const ISBN = result.data.docs[0].isbn[0];
-      coverUrl = `https://covers.openlibrary.org/b/isbn/${ISBN}-L.jpg`;
-    }
+    const { docs } = result.data
+    if (docs.length === 0) return
+    const { isbn } = docs[0]
+    if (!isbn || isbn.length === 0) return
+    coverUrl = `https://covers.openlibrary.org/b/isbn/${isbn[0]}-L.jpg`;
   } catch (error) {
-    console.log('ERROR => ', error.message);
+    console.log('ERROR getCoverUrl => ', error.message);
   }
 
   return coverUrl;

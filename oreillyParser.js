@@ -45,9 +45,15 @@ function parseCsv(data) {
     if (book) {
       book.quotes.push(createQuoteFromLine(line));
     } else {
+      const title = parseSymbols(line['Book Title'])
+      const regex = /https:\/\/learning\.oreilly\.com\/library\/view\/-\/([0-9]+)\//i
+      const bookURL = line['Book URL']
+      const id = bookURL.match(regex)[1]
       books.push({
-        title: parseSymbols(line['Book Title']),
+        id,
+        title,
         date: line['Date of Highlight'],
+        url: bookURL,
         quotes: [createQuoteFromLine(line)],
       });
     }
@@ -61,6 +67,7 @@ function createQuoteFromLine(line) {
     chapter: line['Chapter Title'],
     date: line['Date of Highlight'],
     quote: parseSymbols(line.Highlight),
+    note: parseSymbols(line['Personal Note']),
   };
 }
 
