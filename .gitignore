@@ -1,5 +1,6 @@
 node_modules
 output
+My\ Clippings.txt
 *.csv
 
 .DS_Store

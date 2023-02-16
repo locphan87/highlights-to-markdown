@@ -9,17 +9,21 @@ const parseSymbols = require('./commonTools');
 async function parse(input) {
   const rawClippings = input
     .split(SEPARATOR)
-    .filter((clipping) => clipping != '');
+    .filter((clipping) => clipping != '' && clipping != '\r\n');
   let books = [];
 
   rawClippings.map((clipping) => {
     const [bookData, data, empty, quote] = clipping.trim().split('\n');
+    const regex = /^- Your Highlight on page ([0-9]+) \| Location ([0-9]+-[0-9]+) \| Added on \w+, (.+) (\d+:\d+:\d+ [A-Z]{2})\r$/i
+    const dataMatch = data.match(regex)
 
     if (quote == null || quote.trim() == '') return;
 
     const datedQuote = {
+      date: dataMatch[3],
+      chapter: `Page ${dataMatch[1]} | Location ${dataMatch[2]}`,
       quote: parseSymbols(quote),
-      date: getDate(data),
+      // date: getDate(data),
     };
 
     const currentBookTitle = getBookTitle(bookData);
@@ -47,7 +51,7 @@ async function parse(input) {
 function getDate(data) {
   if (data) {
     const spanishDate = data
-      .substring(data.lastIndexOf(',') + 2, data.lenght)
+      .substring(data.lastIndexOf(',') + 2, data.length)
       .trim();
     return moment(spanishDate, INPUT_DATE_FORMAT, 'es').format(
       OUTPUT_DATE_FORMAT

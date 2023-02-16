@@ -15,41 +15,42 @@ const app = async () => {
 
   if (mode === 'kindle') {
     if (!sourcePath) sourcePath = 'My Clippings.txt';
-
     var sourceFile = fs.readFileSync(sourcePath, 'utf8');
-
     var books = await kindleParse(sourceFile);
   }
   if (mode === 'oreilly') {
     if (!sourcePath) sourcePath = 'oreilly-annotations.csv';
-
     var books = await oreillyParse(sourcePath);
-    console.log('🚀 Books', books.length);
   }
 
   const bookPromises = books.map(async book => {
-    const coverUrl = await getCoverUrl(book.title, book.author);
-    if (coverUrl) {
-      return { ...book, coverUrl }
-    } else {
-      const meta = await getBookMeta(book.title, book.id)
-      return {
-        ...book,
-        ...meta
-      }
+    const meta = await getBookMeta(book.id, book.title, book.author)
+    return {
+      ...book,
+      ...meta
     }
   })
   const newBooks = await Promise.all(bookPromises)
+  console.log('🚀 Books', newBooks.length);
 
-  markdownBuilder(newBooks, outputPath);
+  markdownBuilder(newBooks, outputPath, mode);
 };
 
-async function getBookMeta(title, id) {
-  const oreillyURL = `https://learning.oreilly.com/api/v2/search/?formats=book&query=archive_id:${id}`
+async function getBookMeta(id, title, author) {
+  const SEARCH_API_URL = `https://learning.oreilly.com/api/v2/search/?formats=book`
+  const getURL = () => {
+    if (!id) return [
+      `${SEARCH_API_URL}`,
+      `&query=title:${encodeURIComponent(title)} `,
+      `author:${encodeURIComponent(author)}`
+    ].join('')
+    return `${SEARCH_API_URL}&query=archive_id:${id}`
+  }
+  const oreillyURL = getURL()
   try {
     const response = await axios.get(oreillyURL)
     const { results: [book] } = response.data
-    const { isbn, issued, virtual_pages, publishers, description, cover_url, authors, minutes_required } = book
+    const { isbn, issued, publishers, archive_id, description, cover_url, authors, minutes_required } = book
     const hours = Math.floor(minutes_required / 60)
     const minutes = Math.floor(minutes_required - hours * 60)
     const published = new Date(issued)
@@ -63,16 +64,17 @@ async function getBookMeta(title, id) {
     return {
       description,
       isbn,
-      pages: Math.floor(virtual_pages / 1.5),
+      id: archive_id,
       issued: `${published.toLocaleString('default', { month: 'long' })} ${published.getFullYear()}`,
       publishers: publishers.join(', '),
-      authors: authors.map(mapAuthor).join(', '),
+      author: authors.map(mapAuthor).join(', '),
       coverUrl: cover_url,
-      duration: `${hours}h${minutes}m`
+      url: cover_url.replace('/cover/', '/view/-/'),
+      duration: `${hours}h ${minutes}m`
     }
   } catch(error) {
     console.log('ERROR getBookMeta => ', error.message, title, id);
-    return {}
+    return await getCoverUrl(title, author)
   }
 }
 
@@ -93,7 +95,7 @@ async function getCoverUrl(title, author) {
     console.log('ERROR getCoverUrl => ', error.message);
   }
 
-  return coverUrl;
+  return { coverUrl };
 }
 
 app();
