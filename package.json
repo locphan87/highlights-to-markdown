@@ -13,9 +13,7 @@
     "jest": "^26.0.1"
   },
   "scripts": {
-    "preoreilly": "rm -rf \"$ZKN_PATH/highlights/oreilly/\"",
     "oreilly": "node app oreilly ./oreilly-annotations.csv \"$ZKN_PATH/highlights/oreilly\"",
-    "prekindle": "rm -rf \"$ZKN_PATH/highlights/kindle/\"",
     "kindle": "node app kindle \"./My Clippings.txt\" \"$ZKN_PATH/highlights/kindle\"",
     "test": "jest"
   },

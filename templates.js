@@ -1,9 +1,10 @@
 exports.bookTemplate = `---
-duration: {{duration}}
-publishers: {{publishers}}
+{{#duration}}duration: {{duration}}{{/duration}}
+topics: {{&topics}}
+publishers: {{&publishers}}
 issued: {{issued}}
-ID: {{id}}
-ISBN: {{isbn}}
+{{#pages}}pages: {{pages}}{{/pages}}
+isbn: {{isbn}}
 ---
 # [{{title}}]({{&url}})
 By {{&author}}

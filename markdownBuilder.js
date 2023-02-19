@@ -2,11 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const mustache = require('mustache');
 
-const templatesOreilly = require('./templates_oreilly');
-const templatesKindle = require('./templates_kindle');
+const templates = require('./templates');
 
-function markdownBuilder(books, outputPath = '', mode = 'kindle') {
-  const templates = mode === 'kindle-new' ? templatesKindle : templatesOreilly;
+function markdownBuilder(books, outputPath = '') {
   books.map((book, index) => {
     console.log(`${index + 1}. ${book.title}`);
     var fileContent = mustache.render(templates.bookTemplate, book);
