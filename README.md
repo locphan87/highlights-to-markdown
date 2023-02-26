@@ -1,8 +1,6 @@
 # Kindle and O'Reilly highlights to Markdown
 
 - [Introduction](#introduction)
-  - [Major changes](#major-changes)
-  - [Minor changes](#minor-changes)
 - [Features](#features)
 - [How to install?](#how-to-install)
   - [How to use for Kindle?](#how-to-use-for-kindle)
