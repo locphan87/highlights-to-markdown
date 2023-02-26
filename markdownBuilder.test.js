@@ -1,9 +1,9 @@
-const fs = require('fs');
+const fs = require('fs')
 
-const markdownBuilder = require('./markdownBuilder');
+const markdownBuilder = require('./markdownBuilder')
 
-const EXPECTED_PATH_1 = 'scrum-and-xp-from-the-trenches.md';
-const EXPECTED_PATH_2 = 'another-book.md';
+const EXPECTED_PATH_1 = 'scrum-and-xp-from-the-trenches.md'
+const EXPECTED_PATH_2 = 'another-book.md'
 
 const books = [
   {
@@ -34,23 +34,23 @@ const books = [
       },
     ],
   },
-];
+]
 
 describe('markdownBuilder should', () => {
   afterAll(() => {
-    fs.unlinkSync(EXPECTED_PATH_1);
-    fs.unlinkSync(EXPECTED_PATH_2);
-  });
+    fs.unlinkSync(EXPECTED_PATH_1)
+    fs.unlinkSync(EXPECTED_PATH_2)
+  })
 
   test('create a md file with correct name for each book', () => {
-    markdownBuilder(books);
+    markdownBuilder(books)
 
-    expect(fs.existsSync(EXPECTED_PATH_1, 'utf8')).toBe(true);
-    expect(fs.existsSync(EXPECTED_PATH_2, 'utf8')).toBe(true);
-  });
+    expect(fs.existsSync(EXPECTED_PATH_1, 'utf8')).toBe(true)
+    expect(fs.existsSync(EXPECTED_PATH_2, 'utf8')).toBe(true)
+  })
 
   test('create md files with proper data', () => {
-    markdownBuilder(books);
+    markdownBuilder(books)
 
     expect(fs.readFileSync(EXPECTED_PATH_1, 'utf8')).toStrictEqual(
       `---
@@ -76,6 +76,6 @@ quotes:
 {{ quote.quote }}
 {% endfor %}
 `
-    );
-  });
-});
+    )
+  })
+})

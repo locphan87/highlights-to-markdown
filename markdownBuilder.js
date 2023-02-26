@@ -1,37 +1,37 @@
-const fs = require('fs');
-const path = require('path');
-const mustache = require('mustache');
+const fs = require('fs')
+const path = require('path')
+const mustache = require('mustache')
 
-const templates = require('./templates');
+const templates = require('./templates')
 
 function markdownBuilder(books, outputPath = '') {
   console.log(`Writing markdown: ${books.length} files`)
   books.map((book, index) => {
-    console.log(`${index + 1}. ${book.title}`);
-    var fileContent = mustache.render(templates.bookTemplate, book);
+    console.log(`${index + 1}. ${book.title}`)
+    var fileContent = mustache.render(templates.bookTemplate, book)
 
     let fileName = `${book.title
       .replace('&#58;', '')
       .replace(/\W+/g, '-')
-      .toLowerCase()}.md`;
+      .toLowerCase()}.md`
 
     try {
-      var filePath = path.join(outputPath, fileName);
-      ensureDirectoryExistence(filePath);
-      fs.writeFileSync(filePath, fileContent);
+      var filePath = path.join(outputPath, fileName)
+      ensureDirectoryExistence(filePath)
+      fs.writeFileSync(filePath, fileContent)
     } catch (error) {
-      console.log('ERROR WRITING = ', error.message);
+      console.log('ERROR WRITING = ', error.message)
     }
-  });
+  })
 }
 
 function ensureDirectoryExistence(filePath) {
-  var dirname = path.dirname(filePath);
+  var dirname = path.dirname(filePath)
   if (fs.existsSync(dirname)) {
-    return true;
+    return true
   }
-  ensureDirectoryExistence(dirname);
-  fs.mkdirSync(dirname);
+  ensureDirectoryExistence(dirname)
+  fs.mkdirSync(dirname)
 }
 
-module.exports = markdownBuilder;
+module.exports = markdownBuilder

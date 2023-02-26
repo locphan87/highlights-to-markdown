@@ -24,4 +24,4 @@ By {{&author}}
 {{&quote}}
 
 {{/quotes}}
-`;
+`

@@ -1,59 +1,60 @@
-const csv = require('@fast-csv/parse');
-const parseSymbols = require('./commonTools');
-const { getQuoteByChapter, reverseQuotes } = require('./utils');
+const csv = require('@fast-csv/parse')
+const parseSymbols = require('./commonTools')
+const { getQuoteByChapter, reverseQuotes } = require('./utils')
 
 async function parse(input) {
   const data = await readCsv(input, {
     headers: true,
     ignoreEmpty: true,
-  });
+  })
 
-  return data;
+  return data
 }
 
 function readCsv(path, options) {
   return new Promise((resolve, reject) => {
-    const data = [];
+    const data = []
 
     csv
       .parseFile(path, options)
       .on('error', reject)
       .on('data', (row) => {
-        row.Highlight = `"${addPaddingToMultilineHighlight(row.Highlight)}"`;
-        data.push(row);
+        row.Highlight = `"${addPaddingToMultilineHighlight(row.Highlight)}"`
+        data.push(row)
       })
       .on('end', () => {
-        const books = parseCsv(data);
-        resolve(reverseQuotes(books));
-      });
-  });
+        const books = parseCsv(data)
+        resolve(reverseQuotes(books))
+      })
+  })
 }
 
 function addPaddingToMultilineHighlight(highlight) {
-  let highlightLines = highlight.split('\n').filter((l) => l != '');
+  let highlightLines = highlight.split('\n').filter((l) => l != '')
   const paddedLines = [
     highlightLines[0],
     ...highlightLines.slice(1).map((l) => '    ' + l),
-  ];
-  return paddedLines.join('\n');
+  ]
+  return paddedLines.join('\n')
 }
 
 function parseCsv(data) {
-  let books = [];
+  let books = []
 
   for (const line of data) {
-    const book = books.find((b) => b.title == parseSymbols(line['Book Title']));
-    const quote = createQuoteFromLine(line);
+    const book = books.find((b) => b.title == parseSymbols(line['Book Title']))
+    const quote = createQuoteFromLine(line)
     if (book) {
-      const prevQuote = getQuoteByChapter(book.quotes, quote.chapter);
+      const prevQuote = getQuoteByChapter(book.quotes, quote.chapter)
       if (!!prevQuote) {
-        prevQuote.quote = `${prevQuote.quote}\n\n${quote.quote}`;
+        prevQuote.quote = `${prevQuote.quote}\n\n${quote.quote}`
       } else {
-        book.quotes.push(quote);
+        book.quotes.push(quote)
       }
     } else {
       const title = parseSymbols(line['Book Title'])
-      const regex = /https:\/\/learning\.oreilly\.com\/library\/view\/-\/([0-9]+)\//i
+      const regex =
+        /https:\/\/learning\.oreilly\.com\/library\/view\/-\/([0-9]+)\//i
       const bookURL = line['Book URL']
       const id = bookURL.match(regex)[1]
       books.push({
@@ -62,11 +63,11 @@ function parseCsv(data) {
         date: line['Date of Highlight'],
         url: bookURL,
         quotes: [quote],
-      });
+      })
     }
   }
 
-  return books;
+  return books
 }
 
 function createQuoteFromLine(line) {
@@ -84,7 +85,7 @@ function createQuoteFromLine(line) {
     chapter: line['Chapter Title'],
     date,
     quote: `${getQuote()} | [${date}](${url})`,
-  };
+  }
 }
 
-module.exports = parse;
+module.exports = parse
