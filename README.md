@@ -20,6 +20,8 @@ The quotes are grouped by Chapter (O'reilly) or Page (Kindle). The books have th
 
 The script will attempt to get metadata from [O'reilly Search API](https://www.oreilly.com/online-learning/integration-docs/search.html#/), fallback to [openlibrary.org](https://openlibrary.org/) if failure.
 
+Sample book generated from O'reilly: [The Manager Path](./exampleFiles/the-manager-s-path.md)
+
 ## How to install?
 
 1. Install [Node](https://nodejs.org/en/download/) if you haven't
