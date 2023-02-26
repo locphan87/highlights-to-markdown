@@ -22,7 +22,7 @@ The script will attempt to get metadata from [O'reilly Search API](https://www.o
 
 ## How to install?
 
-1. Install Node I you haven't
+1. Install [Node](https://nodejs.org/en/download/) if you haven't
 2. Clone and move to folder
 3. `npm i`
 4. Configure the output path `$MARKDOWN_PATH`
