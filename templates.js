@@ -13,8 +13,14 @@ By {{&author}}
 
 {{&description}}
 
+## Contents
+{{#toc}}
+- [{{&label}}]({{&url}}{{filename}})
+{{/toc}}
+
+## Highlights
 {{#quotes}}
-### {{date}} {{chapter}}
+### {{&chapter}}
 {{&quote}}
 
 {{/quotes}}

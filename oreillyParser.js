@@ -1,5 +1,6 @@
 const csv = require('@fast-csv/parse');
 const parseSymbols = require('./commonTools');
+const { getQuoteByChapter, reverseQuotes } = require('./utils');
 
 async function parse(input) {
   const data = await readCsv(input, {
@@ -23,7 +24,7 @@ function readCsv(path, options) {
       })
       .on('end', () => {
         const books = parseCsv(data);
-        resolve(books);
+        resolve(reverseQuotes(books));
       });
   });
 }
@@ -42,8 +43,14 @@ function parseCsv(data) {
 
   for (const line of data) {
     const book = books.find((b) => b.title == parseSymbols(line['Book Title']));
+    const quote = createQuoteFromLine(line);
     if (book) {
-      book.quotes.push(createQuoteFromLine(line));
+      const prevQuote = getQuoteByChapter(book.quotes, quote.chapter);
+      if (!!prevQuote) {
+        prevQuote.quote = `${prevQuote.quote}\n\n${quote.quote}`;
+      } else {
+        book.quotes.push(quote);
+      }
     } else {
       const title = parseSymbols(line['Book Title'])
       const regex = /https:\/\/learning\.oreilly\.com\/library\/view\/-\/([0-9]+)\//i
@@ -54,7 +61,7 @@ function parseCsv(data) {
         title,
         date: line['Date of Highlight'],
         url: bookURL,
-        quotes: [createQuoteFromLine(line)],
+        quotes: [quote],
       });
     }
   }
@@ -63,11 +70,20 @@ function parseCsv(data) {
 }
 
 function createQuoteFromLine(line) {
+  const date = line['Date of Highlight']
+  const url = line['Annotation URL']
+  const quote = parseSymbols(line.Highlight)
+  const note = parseSymbols(line['Personal Note'])
+  const getQuote = () => {
+    if (!!note) {
+      return `${quote} | ==${note}==`
+    }
+    return quote
+  }
   return {
     chapter: line['Chapter Title'],
-    date: line['Date of Highlight'],
-    quote: parseSymbols(line.Highlight),
-    note: parseSymbols(line['Personal Note']),
+    date,
+    quote: `${getQuote()} | [${date}](${url})`,
   };
 }
 

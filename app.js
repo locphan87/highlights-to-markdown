@@ -83,10 +83,12 @@ async function getBookMeta(id, title, author, order) {
       return name;
     };
     console.log(`Book #${order} ${title} - Get book meta from O'reilly`);
+    const toc = await getTOC(archive_id)
     return {
       description,
       isbn,
       id: archive_id,
+      toc,
       issued: `${published.toLocaleString("default", {
         month: "long",
       })} ${published.getFullYear()}`,
@@ -141,6 +143,22 @@ async function getCoverUrl(title, author, order) {
     };
   } catch (error) {
     console.log("ERROR getCoverUrl => ", error.message, title);
+  }
+}
+const getTOC = async (id) => {
+  const url = `${DOMAINS.oreilly}/api/v1/book/${id}/flat-toc/`
+  try {
+    const response = await axios.get(url);
+    const results = response.data;
+    return results.reduce((acc, c) => {
+      if (c.depth !== 1) return acc;
+      return acc.concat({
+        filename: c.filename,
+        label: c.label.trim()
+      });
+    }, []);
+  } catch (error) {
+    console.error(`Error in getTOC: ${error.message}`)
   }
 }
 
