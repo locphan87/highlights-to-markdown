@@ -1,6 +1,6 @@
 const csv = require('@fast-csv/parse')
 const parseSymbols = require('./commonTools')
-const { getQuoteByChapter, reverseQuotes } = require('./utils')
+const { getQuoteByChapter } = require('./utils')
 
 async function parse(input) {
   const data = await readCsv(input, {
@@ -24,7 +24,7 @@ function readCsv(path, options) {
       })
       .on('end', () => {
         const books = parseCsv(data)
-        resolve(reverseQuotes(books))
+        resolve(books)
       })
   })
 }
@@ -40,8 +40,9 @@ function addPaddingToMultilineHighlight(highlight) {
 
 function parseCsv(data) {
   let books = []
+  const reverseData = [...data].reverse()
 
-  for (const line of data) {
+  for (const line of reverseData) {
     const book = books.find((b) => b.title == parseSymbols(line['Book Title']))
     const quote = createQuoteFromLine(line)
     if (book) {
