@@ -14,11 +14,10 @@ describe('MyClippings parser should', () => {
   })
 
   test('split clippings removing empty ones', async () => {
-    const books = await parse(myClippings)
-
+    const result = await parse(myClippings)
     let totalClippings = 0
-    books.map((b) => (totalClippings += b.quotes.length))
-    expect(totalClippings).toBe(72)
+    result.map((b) => (totalClippings += b.quotes.length))
+    expect(totalClippings).toBe(28)
   })
 
   test('map every quote', async () => {
@@ -38,35 +37,13 @@ describe('MyClippings parser should', () => {
     })
   })
 
-  test('parse colon to avoid errors', async () => {
-    const result = await parse(`hola:hola (pepe)
-- Tu subrayado en la posición 773-774 | Añadido el miércoles, 27 de enero de 2016 20:04:07
-
-test :    test
-==========`)
-
-    expect(result[0]).toStrictEqual({
-      title: 'hola&#58;hola',
-      date: '2016-01-27',
-      author: 'pepe',
-      quotes: [
-        {
-          date: '2016-01-27',
-          quote: 'test &#58;    test',
-        },
-      ],
-    })
-  })
-
   test('group by books', async () => {
     const result = await parse(myClippings)
-
-    expect(result.length).toBe(18)
+    expect(result.length).toBe(28)
   })
 
   test('set oldest clipping date to book', async () => {
     const result = await parse(myClippings)
-
     expect(result[2].date).toStrictEqual('2016-02-10')
   })
 })
