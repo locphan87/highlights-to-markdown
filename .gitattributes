@@ -1,0 +1,2 @@
+# Avoid formatting by Prettier, set line end to "LF" to avoid reformatting  on Windows computers.
+* text=auto eol=lf
