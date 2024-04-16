@@ -107,7 +107,72 @@ async function getBookMeta(id, title, author, order) {
     }
   } catch (error) {
     console.log('ERROR getBookMeta => ', error.message, title)
-    return await getCoverUrl(title, author, order)
+    if (!id) {
+      console.log('no id')
+      return await getCoverUrl(title, author, order)
+    } else {
+      //if use is not logged in the book sometime is not found by the search api
+      console.log(id)
+      return await getBookApiMeta(id, title, author, order)
+    }
+  }
+}
+
+async function getBookApiMeta(id, title, author, order) {
+  const BOOK_API_URL = `${DOMAINS.oreilly}/api/v1/book/${id}/`
+  const oreillyURL = BOOK_API_URL
+  try {
+    const response = await axios.get(oreillyURL)
+    const {
+      isbn,
+      issued,
+      publishers, //  id, name, slug
+      identifier, //-> identifier
+      description,
+      cover, // -> cover
+      authors, //authors.name
+      topics, // ->topics
+      pagecount,
+    } = response.data
+    const published = new Date(issued)
+
+    const mapPublishers = (publishers) => {
+      const { name } = publishers
+      return name
+    }
+    const mapAuthor = (author) => {
+      const { name } = author
+      const url = [
+        `${DOMAINS.oreilly}/search/?query=author%3A%22`,
+        `${encodeURIComponent(name)}%22&sort=relevance&highlight=true`,
+      ].join('')
+      return `<a href="${url}">${name}</a>`
+    }
+    const mapTopic = (topic) => {
+      const { name } = topic
+      return name
+    }
+    console.log(`Book #${order} ${title} - Get book meta from O'reilly`)
+    const toc = await getTOC(identifier)
+
+    return {
+      description,
+      isbn,
+      id: identifier,
+      toc,
+      issued: `${published.toLocaleString('default', {
+        month: 'long',
+      })} ${published.getFullYear()}`,
+      topics: topics.map(mapTopic).join(', '),
+      publishers: publishers.map(mapPublishers).join(', '),
+      author: authors.map(mapAuthor).join(', '),
+      // coverUrl: cover,
+      coverUrl: `${DOMAINS.oreilly}/covers/urn:orm:book:${identifier}/400w/`,
+      url: cover.replace('/cover/', '/view/-/'),
+      pages: pagecount,
+    }
+  } catch (error) {
+    console.log('ERROR getBookApiMeta => ', error.message, title)
   }
 }
 
