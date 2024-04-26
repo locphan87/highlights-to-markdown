@@ -9,6 +9,7 @@ const DOMAINS = {
 const app = async () => {
   const kindleParse = require('./kindleParser')
   const oreillyParse = require('./oreillyParser')
+  const oreillyJsonParser = require('./oreillyJsonParser')
   const markdownBuilder = require('./markdownBuilder')
 
   var mode = process.argv[2]
@@ -28,6 +29,11 @@ const app = async () => {
     var books = await oreillyParse(sourcePath)
   }
 
+  if (mode === 'oreillyjson') {
+    if (!sourcePath) sourcePath = './input'
+    var books = await oreillyJsonParser(sourcePath)
+  }
+
   const bookPromises = books.map(async (book, idx) => {
     const meta = await getBookMeta(
       book.id,
@@ -45,13 +51,13 @@ const app = async () => {
   markdownBuilder(newBooks, outputPath)
 }
 
-async function getBookMeta(id, title, author, order) {
+async function getBookMeta(id, booktitle, author, order) {
   const SEARCH_API_URL = `${DOMAINS.oreilly}/api/v2/search/?formats=book`
   const getURL = () => {
     if (!id)
       return [
         `${SEARCH_API_URL}`,
-        `&query=title:${encodeURIComponent(title)} `,
+        `&query=title:${encodeURIComponent(booktitle)} `,
         `author:${encodeURIComponent(author)}`,
       ].join('')
     return `${SEARCH_API_URL}&query=archive_id:${id}`
@@ -67,6 +73,7 @@ async function getBookMeta(id, title, author, order) {
       issued,
       publishers,
       archive_id,
+      title, //-> optional if no title was found in quote
       description,
       cover_url,
       authors,
@@ -87,9 +94,14 @@ async function getBookMeta(id, title, author, order) {
       const { name } = topic
       return name
     }
-    console.log(`Book #${order} ${title} - Get book meta from O'reilly`)
+    const currtitle = booktitle || title
+    console.log(`Book #${order} ${currtitle} - Get book meta from O'reilly`)
+    if (booktitle !== title && typeof booktitle !== 'undefined') {
+      console.log('ERROR: Title are not equal')
+    }
     const toc = await getTOC(archive_id)
     return {
+      title,
       description,
       isbn,
       id: archive_id,
@@ -106,19 +118,19 @@ async function getBookMeta(id, title, author, order) {
       duration: `${hours}h ${minutes}m`,
     }
   } catch (error) {
-    console.log('ERROR getBookMeta => ', error.message, title)
+    console.log('ERROR getBookMeta => ', error.message, booktitle)
     if (!id) {
       console.log('no id')
-      return await getCoverUrl(title, author, order)
+      return await getCoverUrl(booktitle, author, order)
     } else {
       //if use is not logged in the book sometime is not found by the search api
       console.log(id)
-      return await getBookApiMeta(id, title, author, order)
+      return await getBookApiMeta(id, booktitle, author, order)
     }
   }
 }
 
-async function getBookApiMeta(id, title, author, order) {
+async function getBookApiMeta(id, booktitle, author, order) {
   const BOOK_API_URL = `${DOMAINS.oreilly}/api/v1/book/${id}/`
   const oreillyURL = BOOK_API_URL
   try {
@@ -128,6 +140,7 @@ async function getBookApiMeta(id, title, author, order) {
       issued,
       publishers, //  id, name, slug
       identifier, //-> identifier
+      title, //-> optional if no title was found in quote
       description,
       cover, // -> cover
       authors, //authors.name
@@ -152,10 +165,14 @@ async function getBookApiMeta(id, title, author, order) {
       const { name } = topic
       return name
     }
-    console.log(`Book #${order} ${title} - Get book meta from O'reilly`)
+    const currtitle = booktitle || title
+    console.log(`Book #${order} ${currtitle} - Get book meta from O'reilly`)
+    if (booktitle !== title && typeof booktitle !== 'undefined') {
+      console.log('ERROR: Title are not equal')
+    }
     const toc = await getTOC(identifier)
-
     return {
+      title,
       description,
       isbn,
       id: identifier,
@@ -172,7 +189,7 @@ async function getBookApiMeta(id, title, author, order) {
       pages: pagecount,
     }
   } catch (error) {
-    console.log('ERROR getBookApiMeta => ', error.message, title)
+    console.log('ERROR getBookApiMeta => ', error.message, booktitle)
   }
 }
 
