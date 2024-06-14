@@ -4,19 +4,21 @@
   "description": "",
   "main": "parser.js",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.8",
     "fast-csv": "^4.3.6",
     "moment": "^2.25.3",
-    "mustache": "^4.0.1"
+    "mustache": "^4.0.1",
+    "turndown": "^7.1.3"
   },
   "devDependencies": {
     "husky": "^8.0.3",
     "jest": "^26.0.1",
     "lint-staged": "^13.1.2",
-    "prettier": "2.8.4"
+    "prettier": "^2.8.4"
   },
   "scripts": {
     "oreilly": "node app oreilly ./oreilly-annotations.csv \"$MARKDOWN_PATH/highlights/oreilly\"",
+    "oreillyjson": "node app oreillyjson ./input \"$MARKDOWN_PATH/highlights/oreilly\"",
     "kindle": "node app kindle \"./My Clippings.txt\" \"$MARKDOWN_PATH/highlights/kindle\"",
     "test": "jest",
     "prepare": "husky install",
